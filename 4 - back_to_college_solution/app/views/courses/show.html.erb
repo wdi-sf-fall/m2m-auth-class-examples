@@ -1,0 +1,13 @@
+<h1>More info about <%= @course.name%></h1>
+
+<h2>Enrolled Students</h2>
+<% @course.students.each do |student|%>
+  <p>
+    Name: <%= student.name %>
+  </p>
+<% end %>
+
+
+<%= link_to("Edit this course", edit_course_path)%>
+<br>
+<%= link_to("Delete this course", course_path, method: "delete", data: {confirm: "Are you sure?"})%>

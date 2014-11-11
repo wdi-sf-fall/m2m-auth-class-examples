@@ -1,0 +1,18 @@
+<h1>More info about <%= @student.name%></h1>
+
+<h2>Enrollments</h2>
+<% @student.courses.each do |course|%>
+  <p>
+    Name: <%= course.name %>
+  </p>
+<% end %>
+
+<%= link_to("Enroll in courses", enroll_student_path) %>
+<br>
+<%= link_to("Edit this student", edit_student_path)%>
+<br>
+<%= link_to("Delete this student", student_path, method: "delete", data: {confirm: "Are you sure?"})%>
+<br>
+<%= link_to "See courses", courses_path %>
+<br>
+<%= link_to "See students", students_path %>

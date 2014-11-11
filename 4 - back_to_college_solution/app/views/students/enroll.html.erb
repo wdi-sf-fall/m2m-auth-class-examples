@@ -1,0 +1,22 @@
+<div class="text-center">
+  <h1>Enroll in a new course!</h1>
+
+  <%= form_for @student, url: students_path, method: "post" do |f|%>
+
+  <%= hidden_field_tag :student_id, @student.id%>
+
+  <% Course.order(:name).each do |course| %>
+      <div class="checkbox">
+        <label>
+          <%= check_box_tag('course_ids[]', course.id, course.in?(@student.courses)) %>
+        <%= course.name%>
+        </label>
+      </div>
+    <% end %>
+
+<%= f.submit("Enroll in these courses", class: "btn btn-primary")%>
+    <% end %>
+
+
+
+</div>

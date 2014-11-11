@@ -1,0 +1,17 @@
+<h1>Student List</h1>
+
+<% @students.each do |student| %>
+  <p>
+    <%= student.name%>
+    <br>
+    <%= link_to "See enrollments", student_path(student.id) %>
+  </p>
+<% end %>
+
+  <p>
+    <%= link_to "Add a student", new_student_path %>
+  </p>
+  <p>
+    <%= link_to "See courses", courses_path %>
+  </p>
+

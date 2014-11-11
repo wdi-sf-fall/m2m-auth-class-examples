@@ -1,0 +1,19 @@
+<h1>Your todos:</h1>
+<% @todos.each do |todo| %>
+<p>
+  <%= todo%>
+ <%= link_to "X", todo_path(todo), method: "delete", data: {confirm: "are you sure?"}%>
+</p>
+<% end %>
+
+<h3>Create a todo </h3>
+  <%= form_tag(todos_path) do %>
+<p>
+  <%= label_tag(:task) %>
+  <%= text_field_tag(:task, nil, autofocus: true) %>
+  <%= submit_tag "Add"%>
+  <% end %>
+</p>
+
+<%= link_to "Delete all tasks", todos_path, method: "delete", data: {confirm: "are you sure?"}%>
+
