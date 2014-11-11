@@ -23,15 +23,16 @@
 ## Finishing up
 
 - Once you have full CRUD, allow students to enroll for multiple courses. 
-- The student should see a list of all of the courses as checkboxes and choose whichever ones they want to sign up for
-- If a Student has already signed up for the course, ensure there are no duplicates
-- If a student unchecks an existing course, make sure to remove it from the enrollments table
+- The student should see a list of all of the courses as checkboxes and choose whichever ones they want to sign up for. If the student is already enrolled in a course, the checkbox should be checked.
+- If a Student has already signed up for the course, ensure there are not duplicate signups when saving their courses multple times.
+- If a student unchecks a course, make sure the enrollments table also reflects that the enrollment was removed. You can always check in terminal/rails console to see if these changes have been made
 - __this is going to be challenging__ so do not get discouraged if you can not solve it - we will review how this is done.
 - If you have done this, for each student, show their enrollments and for each course, show their students.
 
 
 ### Bonus
 
+- Add authentication to this example - give Students a username and password and build a login and signup form
 - Pat yourself on the back if you get here, it's been a long day :)
 
 
