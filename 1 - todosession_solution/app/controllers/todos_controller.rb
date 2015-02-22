@@ -9,7 +9,6 @@ class TodosController < ApplicationController
       redirect_to todos_path, alert: "Not cool...."
     else
       session[:todos].push(params[:task])
-      flash[:success]
       redirect_to todos_path, flash: {success: "Created"}
     end
   end
