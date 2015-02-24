@@ -36,45 +36,32 @@ root 'access#login'
 
 ### Next steps
 
-- Add the following code to your `signup.html.erb` (and clean up the formatting a bit)
+### Including simple form
+
+What's that? Excellent question! Well, as we have seen, `form_for` is a bit of a pain in the ass (esspecially as we start getting into more complex associations). Thankfully, simple form is a very nice tool we can use to generate our forms with far less pain. To get started, read the first part of the documentation [here](https://github.com/plataformatec/simple_form).
+
+- After reading, jump to your Gemfile and include `gem "simple_form"`
+- After running `bundle`, run the command `rails g simple_form:install` in terminal and then add the following code to your `signup.html.erb`
 
 ```
-Signup
+<h1>Signup</h1>
 
-<% if @user.errors.any? %>
-  <% @user.errors.full_messages.each do |error| %>
-    <p class = "text-danger"><%= error %></p>
-  <% end %>
+<%= simple_form_for(@user, url: signup_path) do |f|%>
+  <p>
+    <%= f.input(:username, autofocus: true) %>
+  </p>
+  <p>
+    <%= f.input(:password, required: true) %>
+  </p>
+  <p>
+    <%= f.button(:submit, "Signup", class: "btn btn-primary") %>
+  </p>
+    <%= link_to "Have an account already? Log in here", login_path %>
 <% end %>
-
-<%= form_for(@user, url: signup_path) do |f|%>
-
-
-  <%= f.label(:username) %>
-  <%= f.text_field(:username, autofocus: true) %>
-
-
-  <%= f.label(:password) %>
-  <%= f.password_field(:password) %>
-
-
-  <%= f.submit("Signup", class: "btn btn-primary") %>
-</p>
-  <%= link_to "Have an account already? Log in here", login_path %>
-<% end %>
-
 ```
 
 - your next step is to add an action in your controller called `create` 
-- make sure you add the permitted parameters! Here is what your code should look like 
-
-```
-private
-  def user_params
-    params.require(:user).permit(:username, :password, :password_digest)
-  end
-```
-
+- make sure you add the permitted parameters (`password_digest` should be among them ) 
 - you should be able to render the signup form. If that works, finish up the create action.
 - In the create action you should create a user with the permitted parameters. 
 - If the user has saved successfully, assign the session[:user_id] to the id of the instance of the user you just created and redirect to the home_path 
@@ -124,4 +111,5 @@ This code will check and see if a user has been found, and if so it will call th
 ## Bonus
 
 - Make sure a logged in user is unable to revisit the login and signup page
+- Your attempt_login action is a bit long?? Try to refactor to move some of the login logic into our model?
 
